@@ -1,0 +1,19 @@
+<div class="canvas">
+<div class="tree-menu">
+  <div class="menu-item" [style.cursor]="'pointer'" *ngFor="let menu of leftMenu">
+    <a (click)="menuClick(menu.displayName)"
+       [ngClass]="{ selected: selectedMenu.includes(menu.displayName) }">
+      {{ menu.displayName }}
+    </a>
+
+    <ul *ngIf="selectedMenu.includes(menu.displayName)">
+      <li class="submenu" *ngFor="let subMenu of menu.subModules">
+        <a (click)="menuClick(menu.displayName, subMenu.route)">{{ subMenu.displayName }}</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="view">
+  <router-outlet></router-outlet>
+</div>
+</div>
